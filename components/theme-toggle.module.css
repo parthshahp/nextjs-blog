@@ -1,0 +1,79 @@
+/* src/components/ThemeToggle/theme-toggle.module.css */
+/* Assuming this file is alongside your ThemeToggle.tsx */
+
+/* Base styling for the button */
+.themeToggleButton {
+  font-family: var(--font-primary);
+  /* Uses a CSS variable, ensure it's defined globally */
+  font-weight: bold;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  /* Remove default button padding */
+  display: flex;
+  /* Helps center the icon-container */
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  /* Ensure theme-aware text color */
+  font-size: 1rem;
+  /* Inherited from original button styling */
+  line-height: 1.5;
+  /* Inherited from original button styling */
+}
+
+/* Container for the two overlapping icons (sun and moon) */
+.iconContainer {
+  position: relative;
+  width: 24px;
+  /* Matches SVG dimensions */
+  height: 24px;
+  /* Matches SVG dimensions */
+  /* Ensures click target is correctly sized around icons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Wrapper for each individual icon (sun or moon) */
+.iconWrapper {
+  position: absolute;
+  transition:
+    transform 0.5s ease,
+    /* Smooth rotation transition */
+    opacity 0.3s ease;
+  /* Smooth fade transition */
+  backface-visibility: hidden;
+  /* Prevents flickering during 3D transform */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* Ensures SVG is centered within its wrapper */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles for the currently active icon */
+.active {
+  opacity: 1;
+  transform: rotateY(0deg);
+  /* Fully visible and facing forward */
+  z-index: 2;
+  /* Ensures active icon is on top */
+}
+
+/* Styles for the inactive (hidden) icon */
+.inactive {
+  opacity: 0;
+  transform: rotateY(180deg);
+  /* Rotated away and hidden */
+  z-index: 1;
+  /* Pushed behind the active icon */
+}
+
+/* SVG styling to ensure they respect currentColor for stroke */
+.themeToggleButton svg {
+  stroke: currentColor;
+  /* Allows the SVG stroke to inherit text color */
+}

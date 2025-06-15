@@ -1,0 +1,15 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.introContainer {
+  /* margin-bottom: 1rem; */
+  display: flex;
+  flex-direction: column;
+}
+
+.intro {
+  line-height: 1.2;
+  height: 100%;
+}
