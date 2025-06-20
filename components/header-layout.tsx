@@ -5,7 +5,7 @@ import styles from "./header-layout.module.css";
 type HeaderLayoutProps = {
   title?: string,
   subtitle?: string,
-  children: React.ReactElement
+  children?: React.ReactElement
 }
 
 export default function HeaderLayout({ title = 'Parth Shah', subtitle = 'Software Engineer from Atlanta', children }: HeaderLayoutProps) {

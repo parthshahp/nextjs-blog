@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
 import HeaderLayout from "@/components/header-layout";
+import Carousel from "@/components/carousel";
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       <HeaderLayout>
         <>
           <p>
-            Hi! I&apos;m Parth, a full-stack developer currently working for <a href="https://www.yardi.com"
+            Hi! I&apos;m Parth, a full-stack developer currently working for <a target="_blank" href="https://www.yardi.com"
             ><span className={`${styles.underline} ${styles.yardi}`}>Yardi Systems</span></a
             > and based in Atlanta, Georgia.
           </p>
@@ -21,10 +22,10 @@ export default function Home() {
         </>
       </HeaderLayout >
 
-      {/* <div class="projects-section"> */}
-      {/*   <h2>Projects</h2> */}
-      {/*     <Carousel /> */}
-      {/* </div> */}
+      <div className="projects-section">
+        <h2>Projects</h2>
+        <Carousel />
+      </div>
     </>
   );
 }
