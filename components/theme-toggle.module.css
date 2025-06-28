@@ -43,9 +43,6 @@
   backface-visibility: hidden;
 }
 
-/* --- THE CORRECTED LOGIC --- */
-
-/* Default/Light Mode Styles */
 .sunWrapper {
   opacity: 1;
   transform: rotate(0deg);
@@ -56,7 +53,6 @@
   transform: rotate(90deg);
 }
 
-/* Dark Mode Styles, now targeting the button's data-theme attribute */
 .themeToggleButton[data-theme="dark"] .sunWrapper {
   opacity: 0;
   transform: rotate(-90deg);
