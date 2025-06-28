@@ -1,41 +1,32 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import styles from './theme-toggle.module.css';
+import styles from './theme-toggle.module.css'; // Import the updated CSS Module
 import { useTheme } from 'next-themes';
 
 export default function ThemeToggle() {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { setTheme } = useTheme();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  const handleClick = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+  const toggleTheme = () => {
+    const currentTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
   };
 
   return (
     <button
-      onClick={handleClick}
+      onClick={toggleTheme}
       aria-label="Toggle theme between light and dark"
       title="Toggle theme"
       className={styles.themeToggleButton}
     >
       <div className={styles.iconContainer}>
-        {/* Sun Icon Wrapper */}
-        <div className={`${styles.iconWrapper} ${theme === 'light' ? styles.active : styles.inactive}`}>
+        {/* Sun Icon: Always rendered */}
+        <div className={styles.sunWrapper}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            stroke="currentColor"
             width="24"
             height="24"
           >
@@ -46,14 +37,13 @@ export default function ThemeToggle() {
             />
           </svg>
         </div>
-        {/* Moon Icon Wrapper */}
-        <div className={`${styles.iconWrapper} ${theme === 'dark' ? styles.active : styles.inactive}`}>
+        {/* Moon Icon: Always rendered */}
+        <div className={styles.moonWrapper}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            stroke="currentColor"
             width="24"
             height="24"
           >
