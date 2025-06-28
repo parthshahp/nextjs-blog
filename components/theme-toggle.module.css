@@ -1,5 +1,10 @@
 /* src/components/ThemeToggle/theme-toggle.module.css */
 
+.placeholder {
+  width: 24px;
+  height: 24px;
+}
+
 .themeToggleButton {
   font-family: var(--font-primary);
   font-weight: bold;
@@ -17,7 +22,6 @@
 
 .themeToggleButton svg {
   stroke: currentColor;
-  /* Ensures SVG icons inherit the button's color */
 }
 
 .iconContainer {
@@ -26,12 +30,10 @@
   height: 24px;
 }
 
-/* Base styles for BOTH icon wrappers */
 .sunWrapper,
 .moonWrapper {
   position: absolute;
   inset: 0;
-  /* A modern shorthand for top:0, right:0, bottom:0, left:0 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,9 +43,6 @@
   backface-visibility: hidden;
 }
 
-/* --- THE NEW LOGIC --- */
-
-/* LIGHT MODE STYLES (default) */
 .sunWrapper {
   opacity: 1;
   transform: rotate(0deg);
@@ -53,9 +52,6 @@
   opacity: 0;
   transform: rotate(90deg);
 }
-
-/* DARK MODE STYLES */
-/* When html.dark exists, flip the visibility of the icons */
 
 :global(html.dark) .sunWrapper {
   opacity: 0;
