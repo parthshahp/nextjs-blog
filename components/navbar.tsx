@@ -20,13 +20,13 @@ export default function Navbar() {
         </li>
         <li>
           {/* Apply .navLink to the <a> tag */}
-          <a
+          <Link
             href="/blog"
             aria-current={path === '/blog' ? 'page' : undefined}
             className={styles.navLink}
           >
             blog
-          </a>
+          </Link>
         </li>
         <li>
           {/* Apply .navLink to external links too for consistent styling */}
