@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inconsolata } from "next/font/google"
 import "./globals.css";
 import Topbar from "@/components/topbar";
-import { ThemeProvider } from "@/context/theme-context";
+import { ThemeProvider } from "next-themes";
 
 const inconsolata = Inconsolata({
   variable: "--inconsolata",
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inconsolata.className}`}>
         <ThemeProvider>
           <Topbar />

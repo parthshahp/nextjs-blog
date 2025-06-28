@@ -1,13 +1,23 @@
 'use client';
 
-import { useTheme } from '../context/theme-context';
-import styles from './theme-toggle.module.css'; // Import the CSS Module
+import { useState, useEffect } from 'react';
+import styles from './theme-toggle.module.css';
+import { useTheme } from 'next-themes';
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   const handleClick = () => {
-    toggleTheme();
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   return (
@@ -15,28 +25,28 @@ export default function ThemeToggle() {
       onClick={handleClick}
       aria-label="Toggle theme between light and dark"
       title="Toggle theme"
-      className={styles.themeToggleButton} // Apply the main button style
+      className={styles.themeToggleButton}
     >
       <div className={styles.iconContainer}>
-        {/* Sun Icon Wrapper: Active when theme is 'light' */}
+        {/* Sun Icon Wrapper */}
         <div className={`${styles.iconWrapper} ${theme === 'light' ? styles.active : styles.inactive}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5} // React uses camelCase for SVG attributes
+            strokeWidth={1.5}
             stroke="currentColor"
             width="24"
             height="24"
           >
             <path
-              strokeLinecap="round" // React uses camelCase
-              strokeLinejoin="round" // React uses camelCase
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
             />
           </svg>
         </div>
-        {/* Moon Icon Wrapper: Active when theme is 'dark' */}
+        {/* Moon Icon Wrapper */}
         <div className={`${styles.iconWrapper} ${theme === 'dark' ? styles.active : styles.inactive}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
