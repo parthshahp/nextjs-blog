@@ -1,88 +1,93 @@
-import fs from "fs";
 import path from "path";
+import fs from "fs"; // Still need fs to read directory contents
 
+// Your Metadata type remains the same
 export type Metadata = {
   title: string;
   slug: string;
   date: string;
-  updated: string;
-  published: string;
+  updated?: string;
+  published: boolean;
   description: string;
-  tags: string;
+  tags?: string[];
 };
 
-function parseFrontmatter(fileContent: string): {
-  metadata: Metadata;
-  content: string;
-} {
-  const frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
-  const match = frontmatterRegex.exec(fileContent);
-  const frontMatterBlock = match![1];
-  const content = fileContent.replace(frontmatterRegex, "").trim();
-  const frontMatterLines = frontMatterBlock.trim().split("\n");
-  const metadata: Partial<Metadata> = {};
+export async function getBlogPostsMetadata() {
+  const postsDirectory = path.join(process.cwd(), "content");
 
-  // TODO: Handle published boolean and tags array
-  frontMatterLines.forEach((line) => {
-    const [key, ...valueArr] = line.split(": ");
-    let value = valueArr.join(": ").trim();
-    value = value.replace(/^['"](.*)['"]$/, "$1"); // Remove quotes
-    metadata[key.trim() as keyof Metadata] = value;
-  });
+  const mdxFiles = fs
+    .readdirSync(postsDirectory)
+    .filter((file) => path.extname(file) === ".mdx")
+    .map((file) => path.basename(file, ".mdx"));
 
-  return { metadata: metadata as Metadata, content };
+  const allPostsMetadata = await Promise.all(
+    mdxFiles.map(async (slug) => {
+      try {
+        const { metadata } = await import(`@/content/${slug}.mdx`);
+
+        if (
+          typeof metadata !== "object" ||
+          metadata === null ||
+          !metadata.title ||
+          !metadata.date ||
+          typeof metadata.published !== "boolean"
+        ) {
+          console.warn(
+            `Skipping post with slug "${slug}" dueed to incomplete or invalid metadata.`,
+          );
+          return null;
+        }
+
+        return {
+          slug,
+          metadata: metadata as Metadata, // Ensure type conformity
+        };
+      } catch (error) {
+        console.error(
+          `Error importing or parsing metadata for ${slug}.mdx:`,
+          error,
+        );
+        return null;
+      }
+    }),
+  );
+
+  return allPostsMetadata
+    .filter(Boolean) // Removes nulls
+    .filter((post) => post!.metadata.published); // Filters by published status
 }
 
-function getMDXFiles(dir: string) {
-  return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
-}
-
-function readMDXFile(filePath: string) {
-  const rawContent = fs.readFileSync(filePath, "utf-8");
-  return parseFrontmatter(rawContent);
-}
-
-function getMDXData(dir: string) {
-  const mdxFiles = getMDXFiles(dir);
-  return mdxFiles
-    .map((file) => {
-      const { metadata, content } = readMDXFile(path.join(dir, file));
-      const slug = path.basename(file, path.extname(file));
-
-      return {
-        metadata,
-        slug,
-        content,
-      };
-    })
-    .filter((post) => post.metadata.published === "true");
-}
-
-export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "content"));
-}
-
-export function formatDate(date: string, includeRelative = false) {
+export function formatDate(
+  dateString: string,
+  includeRelative = false,
+): string {
   const currentDate = new Date();
-  if (!date.includes("T")) {
-    date = `${date}T00:00:00`;
+  let targetDate: Date;
+
+  if (!dateString.includes("T")) {
+    targetDate = new Date(`${dateString}T00:00:00`);
+  } else {
+    targetDate = new Date(dateString);
   }
-  const targetDate = new Date(date);
+
+  if (isNaN(targetDate.getTime())) {
+    return "Invalid Date";
+  }
 
   const yearsAgo = currentDate.getFullYear() - targetDate.getFullYear();
   const monthsAgo = currentDate.getMonth() - targetDate.getMonth();
   const daysAgo = currentDate.getDate() - targetDate.getDate();
 
-  let formattedDate = "";
+  let formattedRelativeDate = "";
 
   if (yearsAgo > 0) {
-    formattedDate = `${yearsAgo}y ago`;
+    formattedRelativeDate = `${yearsAgo}y ago`;
   } else if (monthsAgo > 0) {
-    formattedDate = `${monthsAgo}mo ago`;
+    formattedRelativeDate = `${monthsAgo}mo ago`;
   } else if (daysAgo > 0) {
-    formattedDate = `${daysAgo}d ago`;
+    formattedRelativeDate = `${daysAgo}d ago`;
   } else {
-    formattedDate = "Today";
+    formattedRelativeDate = "Today";
   }
 
   const fullDate = targetDate.toLocaleString("en-us", {
@@ -95,5 +100,5 @@ export function formatDate(date: string, includeRelative = false) {
     return fullDate;
   }
 
-  return `${fullDate} (${formattedDate})`;
+  return `${fullDate} (${formattedRelativeDate})`;
 }

@@ -1,5 +1,5 @@
 import HeaderLayout from "@/components/header-layout";
-import { getBlogPosts, formatDate } from "./utils";
+import { getBlogPostsMetadata, formatDate } from "./utils";
 import Link from "next/link";
 import styles from './page.module.css';
 
@@ -17,10 +17,10 @@ export default function Blog() {
   );
 }
 
-function PostList() {
-  const posts = getBlogPosts();
+async function PostList() {
+  const allPosts = await getBlogPostsMetadata();
 
-  if (!posts.length) {
+  if (!allPosts) {
     return (
       <div className={styles.blog__listContainer}>
         <h2>Recent Posts</h2>
@@ -28,6 +28,8 @@ function PostList() {
       </div>
     );
   }
+
+  const posts = allPosts.filter((p) => p !== null);
 
   return (
     <div className={styles.blog__listContainer}>
