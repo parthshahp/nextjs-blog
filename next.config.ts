@@ -2,14 +2,23 @@ import type { NextConfig } from "next";
 // import remarkFrontmatter from "remark-frontmatter";
 // import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import createMDX from "@next/mdx";
+import remarkGfm from "remark-gfm";
+import rehypePrism from "rehype-prism-plus";
 
 const nextConfig: NextConfig = {
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
 };
 
-const withMDX = createMDX({});
+// const withMDX = createMDX({});
 
-// TODO: Why is this not working?
+const withMDX = createMDX({
+  // Add markdown options here
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypePrism],
+  },
+});
+
 // const withMDX = createMDX({
 //   extension: /\.mdx?$/,
 //   options: {
