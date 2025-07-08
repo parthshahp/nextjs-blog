@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import type { Metadata } from "@/types";
+import { myComponents } from "@/mdx-components";
 
 const postsDirectory = path.join(process.cwd(), "content");
 
@@ -21,12 +22,13 @@ export async function getPostBySlug(slug: string) {
 
   const { frontmatter, content } = await compileMDX<Metadata>({
     source: fileContent,
+    components: myComponents,
     options: { parseFrontmatter: true },
   });
 
-  // if (!frontmatter || !frontmatter.slug || !frontmatter.published) {
-  //   return null;
-  // }
+  if (!frontmatter || !frontmatter.slug || !frontmatter.published) {
+    return null;
+  }
 
   return {
     frontmatter,

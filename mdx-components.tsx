@@ -62,21 +62,21 @@ export const myComponents: MDXComponents = {
       alt={alt}
     />
   ),
-  // pre: ({ children }: { children: React.ReactNode }) => (
-  //   <pre
-  //     style={{
-  //       fontFamily: "var(--font-mono, monospace)",
-  //       padding: "var(--spacing-unit)",
-  //       fontSize: "0.8em",
-  //       borderRadius: "6px",
-  //       border: "1px solid var(--color-border)",
-  //       overflowX: "auto",
-  //       marginBottom: "var(--spacing-unit)",
-  //     }}
-  //   >
-  //     {children}
-  //   </pre>
-  // ),
+  pre: ({ children }: { children: React.ReactNode }) => (
+    <pre
+      style={{
+        fontFamily: "var(--font-mono, monospace)",
+        padding: "var(--spacing-unit)",
+        fontSize: "0.8em",
+        borderRadius: "6px",
+        border: "1px solid var(--color-primary)",
+        overflowX: "auto",
+        marginBottom: "var(--spacing-unit)",
+      }}
+    >
+      {children}
+    </pre>
+  ),
   a: ({ href, children }: { href: string; children: React.ReactNode }) => (
     <a
       href={href}

@@ -1,13 +1,18 @@
 import React from "react";
-import { getPostBySlug } from "../fetchers";
-import { MdxProvider } from "@/components/mdx-provider";
-
+import { getPostBySlug, getPosts } from "../fetchers";
 
 export default async function Page({ params }: {
   params: { slug: string }
 }) {
   const { slug } = params;
-  const { frontmatter, content, slug: _ } = await getPostBySlug(slug);
+
+  const post = await getPostBySlug(slug);
+
+  if (!post) {
+    return <h1>Oops! This page doesn&apos;t exist.</h1>;
+  }
+
+  const { frontmatter, content, slug: _ } = post;
   console.log(_);
 
   return (
@@ -17,10 +22,13 @@ export default async function Page({ params }: {
       <p>Tags: {frontmatter.tags}</p>
       <hr />
       <article>
-        <MdxProvider>
-          {content}
-        </MdxProvider>
+        {content}
       </article>
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ slug: post.slug }));
 }
