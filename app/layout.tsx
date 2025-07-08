@@ -3,7 +3,6 @@ import { Inconsolata } from "next/font/google"
 import "./globals.css";
 import Topbar from "@/components/topbar";
 import { ThemeProvider } from "next-themes";
-import Script from "next/script";
 import 'prism-themes/themes/prism-gruvbox-dark.css';
 
 const inconsolata = Inconsolata({
