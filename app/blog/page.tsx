@@ -1,7 +1,8 @@
 import HeaderLayout from "@/components/header-layout";
-import { getBlogPostsMetadata, formatDate } from "./utils";
+import type { Metadata } from "@/types";
 import Link from "next/link";
 import styles from './page.module.css';
+import { getPosts } from "./fetchers";
 
 export default function Blog() {
   return (
@@ -18,9 +19,10 @@ export default function Blog() {
 }
 
 async function PostList() {
-  const allPosts = await getBlogPostsMetadata();
+  const allPosts = await getPosts();
+  const allPostsMetadata: Metadata[] = allPosts.map((post) => post.frontmatter);
 
-  if (!allPosts) {
+  if (!allPosts?.length) {
     return (
       <div className={styles.blog__listContainer}>
         <h2>Recent Posts</h2>
@@ -29,22 +31,21 @@ async function PostList() {
     );
   }
 
-  const posts = allPosts.filter((p) => p !== null);
-
   return (
     <div className={styles.blog__listContainer}>
       <h2 className={styles.blog__listTitle}>Recent Posts</h2>
       <ul className={styles.blog__postList}>
-        {posts.map((post) => (
+        {allPostsMetadata.map((post) => (
           <Link
-            key={post.metadata.slug}
-            href={`/blog/${post.metadata.slug}`}
+            key={post.slug}
+            href={`/blog/${post.slug}`}
             className={styles.blog__postLink}
           >
             <li className={`${styles.blog__post} ${styles.card}`}>
-              <h3>{post.metadata.title}</h3>
-              <p className={styles.blog__postDate}>{formatDate(post.metadata.date, false)}</p>
-              <p className={styles.blog__postDescription}>{post.metadata.description}</p>
+              <h3>{post.title}</h3>
+              {/* <p className={styles.blog__postDate}>{formatDate(post.date, false)}</p> */}
+              <p className={styles.blog__postDate}>{post.date}</p>
+              <p className={styles.blog__postDescription}>{post.description}</p>
             </li>
           </Link>
         ))}

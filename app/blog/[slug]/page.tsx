@@ -1,20 +1,25 @@
 import React from "react";
-import type { Metadata } from "../utils";
+import { getPostBySlug } from "../fetchers";
+import { MdxProvider } from "@/components/mdx-provider";
+
 
 export default async function Page({ params }: {
   params: { slug: string }
 }) {
   const { slug } = params;
-  const { default: MDXContent, metadata }: { default: React.FC, metadata: Metadata } = await import(`@/content/${slug}.mdx`);
+  const { frontmatter, content, slug: _ } = await getPostBySlug(slug);
+  console.log(_);
 
   return (
     <>
-      <h1>{metadata.title}</h1>
-      <p>Date Published: {metadata.date}</p>
-      <p>Tags: {metadata.tags}</p>
+      <h1>{frontmatter.title}</h1>
+      <p>Date Published: {frontmatter.date}</p>
+      <p>Tags: {frontmatter.tags}</p>
       <hr />
       <article>
-        <MDXContent />
+        <MdxProvider>
+          {content}
+        </MdxProvider>
       </article>
     </>
   );

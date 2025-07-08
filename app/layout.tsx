@@ -4,7 +4,7 @@ import "./globals.css";
 import Topbar from "@/components/topbar";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
-import 'prism-themes/themes/prism-cb.css';
+import 'prism-themes/themes/prism-gruvbox-dark.css';
 
 const inconsolata = Inconsolata({
   variable: "--inconsolata",
@@ -24,7 +24,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script src="prism.js"></Script>
       </head>
       <body className={`${inconsolata.className}`}>
         <ThemeProvider
