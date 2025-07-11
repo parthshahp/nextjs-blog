@@ -3,6 +3,7 @@ import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import type { Metadata } from "@/types";
 import { myComponents } from "@/mdx-components";
+import rehypePrism from "rehype-prism-plus";
 
 const postsDirectory = path.join(process.cwd(), "content");
 
@@ -23,7 +24,10 @@ export async function getPostBySlug(slug: string) {
   const { frontmatter, content } = await compileMDX<Metadata>({
     source: fileContent,
     components: myComponents,
-    options: { parseFrontmatter: true },
+    options: {
+      parseFrontmatter: true,
+      mdxOptions: { rehypePlugins: [rehypePrism] },
+    },
   });
 
   if (!frontmatter || !frontmatter.slug || !frontmatter.published) {

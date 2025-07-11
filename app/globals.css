@@ -10,11 +10,6 @@
   --color-shadow: light-dark(#0000000a, #ffffff0a);
 }
 
-/* TODO: Need to figure out how to remove this */
-[data-theme="dark"] {
-  color-scheme: dark;
-}
-
 *,
 *::before,
 *::after {

@@ -17,9 +17,9 @@ export default async function Page({ params }: {
 
   return (
     <>
-      <h1>{frontmatter.title}</h1>
-      <p>Date Published: {frontmatter.date}</p>
-      <p>Tags: {frontmatter.tags}</p>
+      <h1 className={styles.postH1}>{frontmatter.title}</h1>
+      <p className="postDate">Date Published: {frontmatter.date}</p>
+      <p className="tags">Tags: {frontmatter.tags?.map((tag) => <span key={tag} className={styles.tag}>{tag}</span>)}</p>
       <hr className={styles.hr} />
       <article>
         {content}

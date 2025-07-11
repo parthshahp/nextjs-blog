@@ -3,7 +3,7 @@ import { Inconsolata } from "next/font/google"
 import "./globals.css";
 import Topbar from "@/components/topbar";
 import { ThemeProvider } from "next-themes";
-import 'prism-themes/themes/prism-gruvbox-dark.css';
+import "@/styles/prism.css"
 
 const inconsolata = Inconsolata({
   variable: "--inconsolata",
@@ -26,7 +26,7 @@ export default function RootLayout({
       </head>
       <body className={`${inconsolata.className}`}>
         <ThemeProvider
-          attribute="class"
+          attribute="data-theme"
           defaultTheme="system"
           enableSystem
         >

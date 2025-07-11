@@ -72,6 +72,8 @@ export const myComponents: MDXComponents = {
         border: "1px solid var(--color-primary)",
         overflowX: "auto",
         marginBottom: "var(--spacing-unit)",
+        backgroundColor: "light-dark(#efefef, #1c1c1c)"
+
       }}
     >
       {children}
