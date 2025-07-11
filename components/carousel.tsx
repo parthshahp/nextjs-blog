@@ -44,6 +44,7 @@ function CarouselCard({ project }: { project: Project }) {
             className={styles.cardImage}
             quality={50}
             fill
+            sizes="(max-width: 768px) 100vw, 768px"
           />
         </div>
         <div className={styles.wrapper}>
