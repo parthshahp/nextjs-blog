@@ -4,7 +4,7 @@
   --light-color: #ffffff;
   --font-primary: "Inconsolata", monospace;
   --color-text: light-dark(var(--dark-color), var(--light-color));
-  --color-background: light-dark(var(--light-color), var(--dark-color));
+  --color-background: light-dark(#fbf1c7, var(--dark-color));
   --color-primary: light-dark(#455b24, #a3c96d);
   --spacing-unit: 1.25rem;
   --color-shadow: light-dark(#0000000a, #ffffff0a);

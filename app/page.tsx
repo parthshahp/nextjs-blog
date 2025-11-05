@@ -9,7 +9,7 @@ export default function Home() {
         <>
           <p>
             Hi! I&apos;m Parth, a full-stack developer currently working for <a target="_blank" href="https://www.commerce.com"
-            ><span className={`${styles.underline} ${styles.yardi}`}>Commerce</span></a
+            ><span className={`${styles.underline} ${styles.commerce}`}>Commerce</span></a
             > and based in Atlanta, Georgia.
           </p>
           <p>I have a passion for building applications, watching movies, and learning languages!</p>
