@@ -1,43 +1,44 @@
 .hr {
-  margin-bottom: var(--spacing-unit);
+    margin-bottom: var(--spacing-unit);
 }
 
 .postHeader {
-  margin-bottom: calc(var(--spacing-unit) * 1);
-  border-bottom: 2px solid var(--color-border, light-dark(#eee, #333));
-  /* Add a border color variable */
-  padding-bottom: calc(var(--spacing-unit) * 0.5);
+    margin-bottom: calc(var(--spacing-unit) * 1);
+    border-bottom: 2px solid var(--color-border, light-dark(#eee, #333));
+    /* Add a border color variable */
+    padding-bottom: calc(var(--spacing-unit) * 0.5);
 }
 
 .post-H1 {
-  margin-bottom: 0.25rem;
-  line-height: 1.2;
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
 }
 
 .postDate {
-  font-size: 0.9rem;
-  color: light-dark(rgb(80, 80, 80), rgb(180, 180, 180));
-  margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    color: light-dark(rgb(80, 80, 80), rgb(180, 180, 180));
+    margin-bottom: 0.75rem;
 }
 
 .tags {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
 }
 
 .tag {
-  font-size: 0.8rem;
-  display: inline-block;
-  padding: 0.1rem 0.5rem;
-  background-color: var(--color-primary);
-  color: light-dark(white, var(--dark-color));
-  border-radius: 4px;
-  margin-right: 0.5rem;
-  text-decoration: none;
-  opacity: 0.8;
-  transition: opacity 0.2s ease;
+    font-size: 0.8rem;
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    background-color: var(--color-primary);
+    color: light-dark(white, var(--dark-color));
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    font-weight: bold;
 }
 
 .tag:hover {
-  opacity: 1;
-  text-decoration: none;
+    opacity: 1;
+    text-decoration: none;
 }

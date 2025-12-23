@@ -17,10 +17,19 @@
 .navLink {
     text-decoration: none;
     color: var(--color-text, #007bff);
+    transition:
+        transform 120ms cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 100ms ease;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .navLink:hover {
     text-decoration: underline;
+}
+
+.navLink:active {
+    transform: scale(0.95);
 }
 
 .navLink[aria-current="page"] {
