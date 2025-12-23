@@ -39,6 +39,7 @@ html {
 
 body {
     margin-inline: auto;
+    overflow-y: scroll;
     font-family: var(--font-primary);
     font-optical-sizing: auto;
     color: var(--color-text);
