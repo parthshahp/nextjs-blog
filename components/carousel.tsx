@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import type { StaticImageData } from 'next/image';
-import styles from './carousel.module.css';
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
+import styles from "./carousel.module.css";
 
 export interface Project {
   title: string;
@@ -12,13 +12,13 @@ export interface Project {
 
 const projects: Project[] = [
   {
-    title: 'Yuedu Reader',
+    title: "Yuedu Reader",
     description:
       "A Chinese language learning app that highlights unknown words in articles. Learn Chinese by reading real content that's at your level, and track your progress!",
     img: "/yuedu.webp",
-    techStack: ['React', 'Typescript', 'Next.js'],
+    techStack: ["React", "Typescript", "Next.js"],
     url: "https://reader.istangel.xyz",
-  }
+  },
 ];
 
 // TODO: Make this into an actual carousel
@@ -35,7 +35,12 @@ export default function Carousel() {
 
 function CarouselCard({ project }: { project: Project }) {
   return (
-    <a href={project.url} target="_blank" rel="noopener noreferrer" className={styles.cardLink}>
+    <a
+      href={project.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.cardLink}
+    >
       <div className={styles.card}>
         <div className={styles.imageWrapper}>
           <Image
@@ -53,7 +58,7 @@ function CarouselCard({ project }: { project: Project }) {
           </div>
           {project.techStack && project.techStack.length > 0 && (
             <div className={styles.techBadges}>
-              {project.techStack.join(', ')}
+              {project.techStack.join(", ")}
             </div>
           )}
           <div className={styles.cardContent}>
@@ -63,5 +68,4 @@ function CarouselCard({ project }: { project: Project }) {
       </div>
     </a>
   );
-};
-
+}

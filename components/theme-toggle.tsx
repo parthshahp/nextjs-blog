@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import styles from './theme-toggle.module.css'; // Import the updated CSS Module
-import { useTheme } from 'next-themes';
+import { useState, useEffect } from "react";
+import styles from "./theme-toggle.module.css";
+import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -16,8 +16,10 @@ export default function ThemeToggle() {
     return <div className={styles.placeholder} />;
   }
 
+  const currentTheme = resolvedTheme ?? theme ?? "light";
+
   const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
+    setTheme(currentTheme === "light" ? "dark" : "light");
   };
 
   return (
@@ -26,7 +28,7 @@ export default function ThemeToggle() {
       aria-label="Toggle theme between light and dark"
       title="Toggle theme"
       className={styles.themeToggleButton}
-      data-theme={theme}
+      data-theme={currentTheme}
     >
       <div className={styles.iconContainer}>
         {/* Sun Icon: Always rendered */}

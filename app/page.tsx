@@ -8,19 +8,32 @@ export default function Home() {
       <HeaderLayout>
         <>
           <p>
-            Hi! I&apos;m Parth, a full-stack developer currently working for <a target="_blank" href="https://www.commerce.com"
-            ><span className={`${styles.underline} ${styles.commerce}`}>Commerce</span></a
-            > and based in Atlanta, Georgia.
+            Hi! I&apos;m Parth, a full-stack developer currently working for{" "}
+            <a target="_blank" href="https://www.commerce.com">
+              <span className={`${styles.underline} ${styles.commerce}`}>
+                Commerce
+              </span>
+            </a>{" "}
+            and based in Atlanta, Georgia.
           </p>
-          <p>I have a passion for building applications, watching movies, and learning languages!</p>
           <p>
-            Recently, I&apos;ve been enjoying working in <span className={`${styles.underline} ${styles.rust}`}>Rust</span> and
-            <span> </span><span className={`${styles.underline} ${styles.typescript}`}>Typescript</span>.
+            I have a passion for building applications, watching movies, and
+            learning languages!
+          </p>
+          <p>
+            Recently, I&apos;ve been enjoying working in{" "}
+            <span className={`${styles.underline} ${styles.rust}`}>Rust</span>{" "}
+            and
+            <span> </span>
+            <span className={`${styles.underline} ${styles.typescript}`}>
+              Typescript
+            </span>
+            .
             {/* <span className={`${styles.underline} ${styles.golang}`}>Go</span>. */}
           </p>
           <p>Feel free to explore and go through my projects and blog posts!</p>
         </>
-      </HeaderLayout >
+      </HeaderLayout>
 
       <div className="projects-section">
         <h2>Projects</h2>

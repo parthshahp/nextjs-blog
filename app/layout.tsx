@@ -1,14 +1,14 @@
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
-import { Inconsolata } from "next/font/google"
+import { Inconsolata } from "next/font/google";
 import "./globals.css";
 import Topbar from "@/components/topbar";
 import { ThemeProvider } from "next-themes";
-import "@/styles/prism.css"
+import "@/styles/prism.css";
 
 const inconsolata = Inconsolata({
   variable: "--inconsolata",
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -23,8 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-      </head>
+      <head></head>
       <body className={`${inconsolata.className}`}>
         <ThemeProvider
           attribute="data-theme"
@@ -36,6 +35,6 @@ export default function RootLayout({
         </ThemeProvider>
         <SpeedInsights />
       </body>
-    </html >
+    </html>
   );
 }

@@ -1,59 +1,59 @@
 /* header.module.css */
 .headerSection {
-  /* Renamed for consistency with React component naming conventions */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  margin-bottom: var(--spacing-unit);
-  gap: var(--spacing-unit);
+    /* Renamed for consistency with React component naming conventions */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    margin-bottom: var(--spacing-unit);
+    gap: var(--spacing-unit);
 }
 
 .headerIntro {
-  width: clamp(230px, 260px, 280px);
-  text-align: right;
-  flex-shrink: 1;
+    width: clamp(230px, 260px, 280px);
+    text-align: right;
+    flex-shrink: 1;
 }
 
 .headerTitle {
-  /* Specific class for h1 */
-  font-size: 2rem;
-  font-weight: 400;
-  margin-bottom: 0.25rem;
-  overflow-wrap: break-word;
+    /* Specific class for h1 */
+    font-size: 2rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+    overflow-wrap: break-word;
 }
 
 .headerSubtitle {
-  /* Specific class for h2 */
-  font-weight: 400;
-  color: light-dark(hsl(0, 0%, 30%), hsl(0, 0%, 70%));
-  overflow-wrap: break-word;
-  line-height: 1.5;
-  margin-bottom: 0;
+    /* Specific class for h2 */
+    font-weight: 400;
+    color: light-dark(hsl(0, 0%, 30%), hsl(0, 0%, 70%));
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    margin-bottom: 0;
 }
 
 .headshot {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  flex-shrink: 0;
-  outline: var(--color-primary) dashed 2px;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    flex-shrink: 0;
+    outline: var(--color-primary) dashed 2px;
 }
 
 @media (max-width: 768px) {
-  .headerSection {
-    flex-wrap: wrap;
-    gap: 0;
-    margin-bottom: 0;
-  }
+    .headerSection {
+        flex-wrap: wrap;
+        gap: 0;
+        margin-bottom: 0;
+    }
 
-  .headerIntro {
-    text-align: center;
-    width: 100%;
-  }
+    .headerIntro {
+        text-align: center;
+        width: 100%;
+    }
 
-  .headshot {
-    margin-top: var(--spacing-unit);
-  }
+    .headshot {
+        margin-top: var(--spacing-unit);
+    }
 }

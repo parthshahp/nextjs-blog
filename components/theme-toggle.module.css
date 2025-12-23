@@ -1,64 +1,64 @@
 /* eToggle/theme-toggle.module.css */
 
 .placeholder {
-  width: 24px;
-  height: 24px;
+    width: 24px;
+    height: 24px;
 }
 
 .themeToggleButton {
-  font-family: var(--font-primary);
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text);
-  font-size: 1rem;
-  line-height: 1.5;
+    font-family: var(--font-primary);
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 .themeToggleButton svg {
-  stroke: currentColor;
+    stroke: currentColor;
 }
 
 .iconContainer {
-  position: relative;
-  width: 24px;
-  height: 24px;
+    position: relative;
+    width: 24px;
+    height: 24px;
 }
 
 .sunWrapper,
 .moonWrapper {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    opacity 0.3s ease,
-    transform 0.5s ease;
-  backface-visibility: hidden;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        opacity 0.3s ease,
+        transform 0.5s ease;
+    backface-visibility: hidden;
 }
 
 .sunWrapper {
-  opacity: 1;
-  transform: rotate(0deg);
+    opacity: 1;
+    transform: rotate(0deg);
 }
 
 .moonWrapper {
-  opacity: 0;
-  transform: rotate(90deg);
+    opacity: 0;
+    transform: rotate(90deg);
 }
 
 .themeToggleButton[data-theme="dark"] .sunWrapper {
-  opacity: 0;
-  transform: rotate(-90deg);
+    opacity: 0;
+    transform: rotate(-90deg);
 }
 
 .themeToggleButton[data-theme="dark"] .moonWrapper {
-  opacity: 1;
-  transform: rotate(0deg);
+    opacity: 1;
+    transform: rotate(0deg);
 }
