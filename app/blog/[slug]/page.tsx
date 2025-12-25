@@ -1,9 +1,11 @@
 import React from "react";
 import { getPostBySlug, getPosts } from "../fetchers";
-import styles from './page.module.css';
+import styles from "./page.module.css";
 
-export default async function Page({ params }: {
-  params: Promise<{ slug: string }>
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
 
@@ -19,11 +21,18 @@ export default async function Page({ params }: {
     <>
       <h1 className={styles.postH1}>{frontmatter.title}</h1>
       <p className="postDate">Date Published: {frontmatter.date}</p>
-      <p className="tags">Tags: {frontmatter.tags?.map((tag) => <span key={tag} className={styles.tag}>{tag}</span>)}</p>
+      {frontmatter.tags && frontmatter.tags.length > 0 && (
+        <p className="tags">
+          Tags:{" "}
+          {frontmatter.tags?.map((tag) => (
+            <span key={tag} className={styles.tag}>
+              {tag}
+            </span>
+          ))}
+        </p>
+      )}
       <hr className={styles.hr} />
-      <article>
-        {content}
-      </article>
+      <article>{content}</article>
     </>
   );
 }

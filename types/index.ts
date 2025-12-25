@@ -1,4 +1,3 @@
-// Your Metadata type remains the same
 export type Metadata = {
   title: string;
   slug: string;

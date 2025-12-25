@@ -13,7 +13,14 @@ export async function getPosts() {
     files.map(async (file) => await getPostBySlug(path.parse(file).name)),
   );
 
-  return blogPosts.filter((post) => post !== null);
+  return blogPosts
+    .filter((post) => post !== null)
+    .sort((post1, post2) => {
+      return (
+        new Date(post2.frontmatter.date).getTime() -
+        new Date(post1.frontmatter.date).getTime()
+      );
+    });
 }
 
 export async function getPostBySlug(slug: string) {
