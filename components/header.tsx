@@ -1,4 +1,5 @@
 import Image from "next/image";
+import headshot from "@/public/headshot_cropped.webp";
 import styles from "./header.module.css"; // Import the CSS module
 
 export default function Header({
@@ -15,11 +16,14 @@ export default function Header({
         <h2 className={styles.headerSubtitle}>{subtitle}</h2>
       </div>
       <Image
-        src="/headshot_cropped.webp"
+        src={headshot}
         alt="Parth Shah"
         className={styles.headshot}
         width={200}
         height={200}
+        sizes="150px"
+        placeholder="blur"
+        priority
       />
     </div>
   );
