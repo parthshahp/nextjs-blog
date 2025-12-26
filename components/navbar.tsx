@@ -30,6 +30,15 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
+          <Link
+            href="/books"
+            aria-current={path === "/books" ? "page" : undefined}
+            className={styles.navLink}
+          >
+            books
+          </Link>
+        </li>
+        <li>
           <a
             href="https://github.com/parthshahp"
             target="_blank"

@@ -38,7 +38,7 @@
     height: 150px;
     object-fit: cover;
     flex-shrink: 0;
-    outline: var(--color-primary) dashed 2px;
+    /*outline: var(--color-primary) dashed 2px;*/
 }
 
 @media (max-width: 768px) {
@@ -53,7 +53,49 @@
         width: 100%;
     }
 
-    .headshot {
+    .headshot .headshotWrap {
         margin-top: var(--spacing-unit);
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .headshotWrap:hover::before {
+        animation-play-state: running;
+    }
+}
+
+.headshotWrap {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.headshotWrap::before {
+    content: "";
+    position: absolute;
+    inset: -4px; /* ring offset */
+    border-radius: 50%;
+    border: 2px dashed var(--color-primary);
+    pointer-events: none;
+    z-index: 2;
+
+    animation: headshotSpin 20s ease-in infinite;
+    animation-play-state: paused;
+}
+
+.headshotWrap:hover::before {
+    animation-play-state: running;
+}
+
+.headshotWrap :global(img) {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes headshotSpin {
+    to {
+        transform: rotate(360deg);
     }
 }

@@ -15,16 +15,18 @@ export default function Header({
         <h1 className={styles.headerTitle}>{title}</h1>
         <h2 className={styles.headerSubtitle}>{subtitle}</h2>
       </div>
-      <Image
-        src={headshot}
-        alt="Parth Shah"
-        className={styles.headshot}
-        width={200}
-        height={200}
-        sizes="150px"
-        placeholder="blur"
-        priority
-      />
+      <div className={styles.headshotWrap}>
+        <Image
+          src={headshot}
+          alt="Parth Shah"
+          className={styles.headshot}
+          width={200}
+          height={200}
+          sizes="150px"
+          placeholder="blur"
+          priority
+        />
+      </div>
     </div>
   );
 }
