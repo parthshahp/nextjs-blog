@@ -1,6 +1,6 @@
 import HeaderLayout from "@/components/header-layout";
 import type { Metadata } from "@/types";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import styles from "./page.module.css";
 import { getPosts } from "./fetchers";
 

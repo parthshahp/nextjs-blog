@@ -5,6 +5,7 @@ import "./globals.css";
 import Topbar from "@/components/topbar";
 import { ThemeProvider } from "next-themes";
 import "@/styles/prism.css";
+import { ViewTransitions } from "next-view-transitions";
 
 const inconsolata = Inconsolata({
   variable: "--inconsolata",
@@ -22,19 +23,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head></head>
-      <body className={`${inconsolata.className}`}>
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="system"
-          enableSystem
-        >
-          <Topbar />
-          {children}
-        </ThemeProvider>
-        <SpeedInsights />
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" suppressHydrationWarning>
+        <head></head>
+        <body className={`${inconsolata.className}`}>
+          <ThemeProvider
+            attribute="data-theme"
+            defaultTheme="system"
+            enableSystem
+          >
+            <Topbar />
+            {children}
+          </ThemeProvider>
+          <SpeedInsights />
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

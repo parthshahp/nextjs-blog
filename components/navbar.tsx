@@ -1,5 +1,6 @@
 "use client";
-import Link from "next/link";
+// import Link from "next/link";
+import { Link } from "next-view-transitions";
 import styles from "./navbar.module.css"; // Import the CSS module
 import { usePathname } from "next/navigation";
 
