@@ -16,11 +16,13 @@ export default function Books() {
       <div className="books-section">
         <h2>Books</h2>
         <p>
-          Currently reading <i>A Drop of Corruption</i> by Robert Jackson
-          Bennett
+          Currently reading <i>The Shadow of the Gods</i> by John Gwynne
         </p>
         <h3>2025</h3>
         <ul className={styles.bookList}>
+          <li>
+            <i>A Drop of Corruption</i> by Robert Jackson Bennett
+          </li>
           <li>
             <i>Kafka on the Shore</i> by Haruki Murakami
           </li>
