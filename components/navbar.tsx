@@ -20,7 +20,7 @@ export default function Navbar() {
             home
           </Link>
         </li>
-        <li>
+        {/*<li>
           <Link
             href="/writing"
             aria-current={path === "/writing" ? "page" : undefined}
@@ -28,7 +28,7 @@ export default function Navbar() {
           >
             writing
           </Link>
-        </li>
+        </li>*/}
         <li>
           <Link
             href="/notes"

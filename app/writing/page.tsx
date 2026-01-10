@@ -4,10 +4,10 @@ import { Link } from "next-view-transitions";
 import styles from "./page.module.css";
 import { getPosts } from "./fetchers";
 
-export default function Blog() {
+export default function Writing() {
   return (
     <>
-      <HeaderLayout title="Blog" subtitle="Thoughts, code, ideas, and more">
+      <HeaderLayout title="Writings" subtitle="Thoughts, code, ideas, and more">
         <p>
           Welcome to my blog where I share my thoughts and experiences on
           software development and technology.
