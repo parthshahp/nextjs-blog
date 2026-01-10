@@ -5,7 +5,7 @@ import type { Metadata } from "@/types";
 import { myComponents } from "@/mdx-components";
 import rehypePrism from "rehype-prism-plus";
 
-const postsDirectory = path.join(process.cwd(), "content");
+const postsDirectory = path.join(process.cwd(), "content/writing");
 
 export async function getPosts() {
   const files = fs.readdirSync(postsDirectory);

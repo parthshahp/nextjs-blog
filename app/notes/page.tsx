@@ -47,7 +47,7 @@ async function PostList() {
         {allPostsMetadata.map((post) => (
           <Link
             key={post.slug}
-            href={`/blog/${post.slug}`}
+            href={`/notes/${post.slug}`}
             className={styles.blog__postLink}
           >
             <li className={`${styles.blog__post} ${styles.card}`}>

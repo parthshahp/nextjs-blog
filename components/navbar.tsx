@@ -22,11 +22,20 @@ export default function Navbar() {
         </li>
         <li>
           <Link
-            href="/blog"
-            aria-current={path === "/blog" ? "page" : undefined}
+            href="/writing"
+            aria-current={path === "/writing" ? "page" : undefined}
             className={styles.navLink}
           >
-            blog
+            writing
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/notes"
+            aria-current={path === "/notes" ? "page" : undefined}
+            className={styles.navLink}
+          >
+            notes
           </Link>
         </li>
         <li>

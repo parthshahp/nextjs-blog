@@ -11,7 +11,7 @@ export default function BlogLayout({
     <>
       <div className={styles.controls}>
         <Link
-          href="/blog"
+          href="/notes"
           aria-label="Back to blog"
           className={styles.backLink}
         >
